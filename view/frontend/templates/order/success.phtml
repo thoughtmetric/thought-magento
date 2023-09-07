@@ -1,0 +1,40 @@
+<?php
+if ($block->getPropertyID()) {
+?>
+
+    <?php
+    if (!$block->isDuplicate()) {
+    ?>
+
+    <!-- Begin: ThoughtMetric pixel success.phtml -->
+    <script>
+      !function(t,e,i){if(!t.thoughtmetric){t.thoughtmetricQueue=t.thoughtmetricQueue||[],t.thoughtmetric=t.thoughtmetric||function(){t.thoughtmetricQueue.push(arguments)};var u=e.createElement("script");u.async=!0,u.src="https://pixel.thoughtmetric.io/tmpixel.min.js";var h=e.getElementsByTagName("script")[0];h.parentNode.insertBefore(u,h)}}(window,document); 
+      thoughtmetric("init","<?= $block->escapeHtml($block->getPropertyID()) ?>");
+      <?php
+      if ($block->getSstDomain()) {
+      ?>
+      thoughtmetric("proxy","<?= $block->escapeHtml($block->getSstDomain()) ?>");
+      <?php
+      }
+      ?>
+      thoughtmetric("pageview");
+      thoughtmetric("event", "order", <?= $block->getOrderJsObject(); ?>);
+      thoughtmetric("identify", <?= $block->getCustomerIDJsObject(); ?>, <?= $block->getCustomerJsObject(); ?>);
+    </script>
+    <!-- End: ThoughtMetric pixel -->
+
+    <?php
+    }
+    ?>
+
+<?php
+} else {
+?>
+    <!-- Begin: ThoughtMetric pixel firePurchaseEvent -->
+    <script>
+        console.error('ThoughtMetric pixel event: Please include the propertyID in the Magento configuration!')
+    </script>
+    <!-- End: ThoughtMetric pixel firePurchaseEvent -->
+<?php
+}
+?>

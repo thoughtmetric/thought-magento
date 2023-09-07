@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="thoughtmetric" translate="label" sortOrder="130" showInDefault="0" showInWebsite="1" showInStore="0">
+            <class>separator-top</class>
+            <label>ThoughtMetric Reporting</label>
+            <tab>general</tab>
+            <resource>ThoughtMetric_OrderTracking::credentials</resource>
+            <group id="credentials" translate="label" type="text" sortOrder="10" showInDefault="0" showInWebsite="1" showInStore="0">
+                <label>ThoughtMetric Configuration</label>
+                <field id="property_id" translate="label comment" type="text" sortOrder="30" showInDefault="0" showInWebsite="1" showInStore="0">
+                    <label>Property ID</label>
+                </field>
+                <field id="sst_domain" translate="label comment" type="text" sortOrder="30" showInDefault="0" showInWebsite="1" showInStore="0">
+                    <label>Server Side Tagging Domain</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

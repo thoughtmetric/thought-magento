@@ -1,0 +1,10 @@
+<script>
+  require([
+    'jquery'
+  ], function ($) {
+
+    $(document).on('ajax:addToCart', function (event, data) {
+      thoughtmetric('event', 'addToCart', {platform: 'magento'});
+    });
+  });
+</script>

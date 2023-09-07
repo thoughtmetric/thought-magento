@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<body>
+    <referenceContainer name="order.success.additional.info">
+        <block class="ThoughtMetric\OrderTracking\Block\Success" name="thoughtmetric.order.success" template="ThoughtMetric_OrderTracking::order/success.phtml" after="-">
+        </block>
+    </referenceContainer>
+</body>

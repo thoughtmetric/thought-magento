@@ -1,0 +1,28 @@
+<?php
+if ($block->getPropertyID()) {
+?>
+    <!-- Begin: ThoughtMetric pixel pixel.phtml -->
+    <script>
+      !function(t,e,i){if(!t.thoughtmetric){t.thoughtmetricQueue=t.thoughtmetricQueue||[],t.thoughtmetric=t.thoughtmetric||function(){t.thoughtmetricQueue.push(arguments)};var u=e.createElement("script");u.async=!0,u.src="https://pixel.thoughtmetric.io/tmpixel.min.js";var h=e.getElementsByTagName("script")[0];h.parentNode.insertBefore(u,h)}}(window,document); 
+      thoughtmetric("init","<?= $block->escapeHtml($block->getPropertyID()) ?>");
+      <?php
+      if ($block->getSstDomain()) {
+      ?>
+      thoughtmetric("proxy","<?= $block->escapeHtml($block->getSstDomain()) ?>");
+      <?php
+      }
+      ?>
+      thoughtmetric("pageview");
+    </script>
+    <!-- End: ThoughtMetric pixel -->
+<?php
+} else {
+?>
+    <!-- Begin: ThoughtMetric pixel -->
+    <script>
+        console.error('ThoughtMetric: Please include the propertyID in the Magento configuration!')
+    </script>
+    <!-- End: ThoughtMetric pixel -->
+<?php
+}
+?>
