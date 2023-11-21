@@ -1,10 +1,22 @@
 <script>
-  require([
-    'jquery'
-  ], function ($) {
-
-    $(document).on('ajax:addToCart', function (event, data) {
+  require(['jquery'], function ($) {
+    jQuery(document).on('ajax:addToCart', function (event, data) {
       thoughtmetric('event', 'addToCart', {platform: 'magento'});
     });
   });
+
+
+require(['Magento_Customer/js/customer-data'], function (customerData) {
+
+    var cart = customerData.get('cart');
+    var count = cart().summary_count;
+    cart.subscribe(function () {
+        if (cart().summary_count !== count) {
+            count = cart().summary_count;
+            // do something here
+            thoughtmetric('event', 'addToCart', {platform: 'magento'});
+        }
+    });
+});
+
 </script>
